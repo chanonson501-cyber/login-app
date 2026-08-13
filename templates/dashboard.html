@@ -30,11 +30,26 @@
             color: #666;
             text-decoration: none;
         }
+        /* โค้ดสำหรับทำให้ตัวอักษรขยับขึ้นลง */
+   .moving-text {
+     animation: bounce 1s infinite alternate;
+   }
+
+   @keyframes bounce {
+     0% {
+       transform: translateY(0);
+     }
+     100% {
+       transform: translateY(-10px); /* ขยับขึ้นไป 10 พิกเซล */
+     }
+   }
     </style>
 </head>
 <body>
 
     <div class="box">
+        <!-- เติม class="moving-text" ตรงนี้ -->
+        <h1 class="moving-text">ยินดีต้อนรับเข้าสู่ระบบ</h1>
         <img src="{{ url_for('static', filename='ploy.png') }}" alt="รูปของฉัน" style="width: 200px; border-radius: 20%; margin-bottom: 20px;">
         CHANON LOVE THAPANEE <br>
         จุ๊บๆ <br>

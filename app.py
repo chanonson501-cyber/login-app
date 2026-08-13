@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 # กำหนด Username และ Password สำหรับล็อกอิน
 USERNAME_DB = "ploy"
-PASSWORD_DB = "ploy"
+PASSWORD_DB = "chanon"
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
@@ -16,7 +16,7 @@ def login():
         if username == USERNAME_DB and password == PASSWORD_DB:
             return redirect(url_for('dashboard'))
         else:
-            error = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง!"
+            error = "ลองใหม่อีกทีค้าบ ถ้าไม่ถูกอีกโดนหอมแก้มนะ"
             
     return render_template('login.html', error=error)
 

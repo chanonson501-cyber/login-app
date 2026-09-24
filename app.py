@@ -3,8 +3,8 @@ from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 
 # กำหนด Username และ Password สำหรับล็อกอิน
-USERNAME_DB = "chanon.sonrit@outlook.com"
-PASSWORD_DB = "0986620801as"
+USERNAME_DB = "123456789"
+PASSWORD_DB = "123456789"
 
 @app.route('/', methods=['GET', 'POST'])
 def login():

@@ -1,28 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
-# กำหนด Username และ Password สำหรับล็อกอิน
-USERNAME_DB = "123456789"
-PASSWORD_DB = "123456789"
-
-@app.route('/', methods=['GET', 'POST'])
-def login():
-    error = None
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        
-        if username == USERNAME_DB and password == PASSWORD_DB:
-            return redirect(url_for('dashboard'))
-        else:
-            error = "ลองใหม่อีกครั้ง"
-            
-    return render_template('login.html', error=error)
-
-@app.route('/dashboard')
-def dashboard():
-    return render_template('dashboard.html')
+@app.route('/')
+def home():
+    # เปลี่ยนให้เรียกใช้งานไฟล์หลักของคุณ (เช่น main.html)
+    return render_template('main.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

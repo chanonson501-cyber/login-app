@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VCC Engineering</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
+</head>
+<body>
+
+    <!-- แถบเมนูด้านบน -->
+    <header>
+        <div class="logo">VCC Engineering</div>
+        <div style="display: flex; align-items: center; gap: 30px;">
+            <div class="nav-links">
+                <a href="#" class="nav-item">About us</a>
+                <a href="#" class="nav-item">Contact</a>
+                <a href="#" class="nav-item">Map</a>
+                
+                <!-- เมนู Product ที่มี Dropdown -->
+                <div class="nav-item dropdown" style="position: relative;">
+                    Product ▾
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Automation Systems</a></li>
+                        <li><a href="#">Low Voltage Systems</a></li>
+                        <li><a href="#">High Voltage Systems</a></li>
+                        <li><a href="#">Control Cabinet</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ส่วนสไลด์โชว์หลัก (Hero Slider) -->
+    <div class="slider-container">
+        <!-- สไลด์ที่ 1 -->
+        <div class="slide active" style="background-image: url('{{ url_for('static', filename='station.jpg') }}');">
+            <div class="slide-content">
+                <h1>Deep in the Amazon, a cooperative partnered with Natura...</h1>
+                <a href="#" class="action-btn">Read the story</a>
+            </div>
+        </div>
+
+        <!-- สไลด์ที่ 2 -->
+        <div class="slide" style="background-image: url('{{ url_for('static', filename='cable.jpg') }}');">
+            <div class="slide-content">
+                <h1>Transform mobility for everyone with sustainable tech.</h1>
+                <a href="#" class="action-btn">Innotrans 2026</a>
+            </div>
+        </div>
+
+        <!-- ปุ่มกดเลื่อนซ้าย-ขวา -->
+        <button class="slider-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="slider-btn next-btn" onclick="changeSlide(1)">&#10095;</button>
+
+        <!-- จุดไข่ปลาบอกหน้า -->
+        <div class="dots-container">
+            <div class="dot active" onclick="currentSlide(0)"></div>
+            <div class="dot" onclick="currentSlide(1)"></div>
+        </div>
+    </div>
+
+    <!-- กล่องป๊อปอัปหน้าล็อกอิน -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="login-box">
+            <button class="close-btn" onclick="closeLoginModal()">&times;</button>
+            <h2>Log in</h2>
+            <p>Sign in to your account</p>
+
+            <form action="/" method="POST">
+                <div class="input-group">
+                    <label for="username">Email address*</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password*</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="submit-btn">Continue</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ส่วนเนื้อหาหลักและเมนูด้านซ้าย -->
+    <section class="main-content-section">
+        <div class="section-header">
+            <span>history</span>
+            <h2>VCC Engineering</h2>
+            <p> V.C.C Engineering Co., Ltd. has been developing for over 20 years. We are producer and distributor of electrical control panels; low voltage, medium voltage and high voltage, also supplied the electrical products & parts under highly qualified standard with competitive prices.With our achievement , We have strong experienced teamwork for one stop service in providing high qualitied standard works in electrical , mechanical and control works including Electrical engineering , layout and design , overseas and domestic procurement , Installation , Commissioning , testing , operation and maintenances. We also supply the electrical parts from local and imported from our partners to supply to domestic and overseas customers. Our vision and commitment is to be reputable and reliable providing products, installation electrical system,control works and outsourcing services to diversify the industries and utilities.</p>
+        </div>
+
+        <div class="content-grid">
+            <!-- เมนูด้านซ้าย -->
+            <div class="side-menu">
+                <a class="menu-item active" onclick="switchCategory('ai', this)">Project Reference</a>
+                <a class="menu-item" onclick="switchCategory('twin', this)">Certificate</a>
+            </div>
+
+            <!-- การ์ดเนื้อหาด้านขวา -->
+            <div class="cards-container" id="dynamicContent">
+                <div class="content-card">
+                    <img src="{{ url_for('static', filename='Electric.jpg') }}" alt="AI Strawberry">
+                    <div class="card-body">
+                        <span class="tag">CUSTOMER STORY</span>
+                        <h3>AI on the family farm helps a robot pick strawberries</h3>
+                        <p>Meet Fravebot. It monitors plant health, spots pests early and predicts harvests two weeks out.</p>
+                        <a href="#" style="color: #050b14; font-weight: bold; text-decoration: none; margin-top: 15px; display: inline-block;">Read Project Reference &rarr;</a>
+                    </div>
+                </div>
+                <div class="content-card" style="background-color: #050b14; color: white;">
+                    <div class="card-body" style="display: flex; flex-direction: column; justify-content: space-height; height: 100%;">
+                        <span class="tag" style="color: #a0aec0;">E-BOOK</span>
+                        <h3 style="color: white;">E-book: Industrial AI across the value chain</h3>
+                        <p style="color: #cbd5e0;">How industrial AI is transforming every step, from product design and engineering to production.</p>
+                        <a href="#" style="color: white; font-weight: bold; text-decoration: none; margin-top: 15px; display: inline-block;">Download the e-book &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ส่วนท้ายเว็บไซต์ (Footer) -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-brand" style="display: flex; flex-direction: column; gap: 15px;">
+                <div class="logo">Contact</div>
+                
+                <div class="social-icons">
+                    <a href="#">in</a>
+                    <a href="#">▶</a>
+                    <a href="#">📷</a>
+                    <a href="#">𝕏</a>
+                    <a href="#">f</a>
+                </div>
+
+                <div class="footer-column" style="padding: 0;">
+                    <h4>ข้อมูลบริษัท</h4>
+                    <p style="color: #a0aec0; font-size: 16px; margin: 0; white-space: nowrap;">V.C.C Engineering Co., Ltd</p>
+                    <p style="color: #a0aec0; font-size: 14px; margin: 0; white-space: nowrap;">139 Soi Ramintra 5 Yak 18, Tharang, Bangkhen, Bangkok 10220</p>
+                    <p style="color: #a0aec0; font-size: 14px; margin: 0; white-space: nowrap;">Tel : 02 552 3658</p>
+                    <p style="color: #a0aec0; font-size: 14px; margin: 0; white-space: nowrap;">Mobile : 086 331 1741</p>
+                    <p style="color: #a0aec0; font-size: 14px; margin: 0; white-space: nowrap;">Fax : 02 552 3658</p>
+                    <p style="color: #a0aec0; font-size: 14px; margin: 0; white-space: nowrap;">Email : vcc_eng@yahoo.com</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright">
+                VCC 2026
+            </div>
+        </div>
+    </footer>
+
+    <!-- จาวาสคริปต์ควบคุมการทำงานของเว็บไซต์ -->
+    <script>
+        // ควบคุมสไลด์โชว์
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(index) {
+            if (index >= slides.length) slideIndex = 0;
+            if (index < 0) slideIndex = slides.length - 1;
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            slides[slideIndex].classList.add('active');
+            dots[slideIndex].classList.add('active');
+        }
+
+        function changeSlide(n) {
+            slideIndex += n;
+            showSlide(slideIndex);
+        }
+
+        function currentSlide(n) {
+            slideIndex = n;
+            showSlide(slideIndex);
+        }
+
+        // ควบคุม Modal ล็อกอิน
+        const modal = document.getElementById('loginModal');
+        function openLoginModal() { modal.style.display = 'flex'; }
+        function closeLoginModal() { modal.style.display = 'none'; }
+        window.onclick = function(event) {
+            if (event.target == modal) closeLoginModal();
+        }
+
+        // ข้อมูลและฟังก์ชันเปลี่ยนเนื้อหาตามเมนูด้านซ้าย
+        const contentData = {
+            ai: `
+                <div class="content-card">
+                    <img src="{{ url_for('static', filename='Electric.jpg') }}" alt="AI">
+                    <div class="card-body">
+                        <span class="tag">CUSTOMER STORY</span>
+                        <h3>AI on the family farm helps a robot pick strawberries</h3>
+                        <p>Meet Fravebot. It monitors plant health, spots pests early and predicts harvests two weeks out.</p>
+                        <a href="#" style="color: #050b14; font-weight: bold; text-decoration: none; margin-top: 15px; display: inline-block;">Read project reference &rarr;</a>
+                    </div>
+                </div>
+                <div class="content-card" style="background-color: #050b14; color: white;">
+                    <div class="card-body">
+                        <span class="tag" style="color: #a0aec0;">E-BOOK</span>
+                        <h3 style="color: white;">E-book: Industrial AI across the value chain</h3>
+                        <p style="color: #cbd5e0;">How industrial AI is transforming every step, from product design and engineering to production.</p>
+                        <a href="#" style="color: white; font-weight: bold; text-decoration: none; margin-top: 15px; display: inline-block;">Download the e-book &rarr;</a>
+                    </div>
+                </div>
+            `,
+            twin: `
+                <div class="content-card">
+                    <img src="{{ url_for('static', filename='cabinet.jpg') }}" alt="Digital Twin">
+                    <div class="card-body">
+                        <span class="tag">CUSTOMER STORY</span>
+                        <h3>From design to road: how Hymer skipped the mockups</h3>
+                        <p>A digital twin took Hymer's Venture S camper van from sketch to production - cutting physical prototypes by 80%.</p>
+                        <a href="#" style="color: #050b14; font-weight: bold; text-decoration: none; margin-top: 15px; display: inline-block;">Read customer story &rarr;</a>
+                    </div>
+                </div>
+                <div class="content-card" style="background-color: #050b14; color: white;">
+                    <div class="card-body">
+                        <span class="tag" style="color: #a0aec0;">E-BOOK</span>
+                        <h3 style="color: white;">The comprehensive digital twin for machinery</h3>
+                        <p style="color: #cbd5e0;">One digital twin to unify mechanical, electrical, and automation engineering seamlessly.</p>
+                        <a href="#" style="color: white; font-weight: bold; text-decoration: none; margin-top: 15px; display: inline-block;">Read more &rarr;</a>
+                    </div>
+                </div>
+            `
+        };
+
+        function switchCategory(categoryKey, element) {
+            document.querySelectorAll('.side-menu .menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            element.classList.add('active');
+            document.getElementById('dynamicContent').innerHTML = contentData[categoryKey];
+        }
+    </script>
+</body>
+</html>

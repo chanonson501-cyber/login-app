@@ -35,11 +35,12 @@
         </div>
 
         <!-- รายการรูปย่อย (Thumbnail) -->
+        <!-- รายการรูปย่อย (Thumbnail) -->
         <div class="thumbnail-list">
-            <img src="{{ url_for('static', filename='station.jpg') }}" alt="Thumb 1" class="thumb active" onclick="currentImage(0)">
-            <img src="{{ url_for('static', filename='cabinet.jpg') }}" alt="Thumb 2" class="thumb" onclick="currentImage(1)">
-            <img src="{{ url_for('static', filename='cable.jpg') }}" alt="Thumb 3" class="thumb" onclick="currentImage(2)">
-            <img src="{{ url_for('static', filename='Electric.jpg') }}" alt="Thumb 4" class="thumb" onclick="currentImage(3)">
+            <img src="{{ url_for('static', filename='station.jpg') }}" alt="Thumb 1" class="thumb active" onclick="changeImage(this)">
+            <img src="{{ url_for('static', filename='cabinet.jpg') }}" alt="Thumb 2" class="thumb" onclick="changeImage(this)">
+            <img src="{{ url_for('static', filename='cable.jpg') }}" alt="Thumb 3" class="thumb" onclick="changeImage(this)">
+            <img src="{{ url_for('static', filename='Electric.jpg') }}" alt="Thumb 4" class="thumb" onclick="changeImage(this)">
         </div>
     </div>
 

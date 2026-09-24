@@ -33,7 +33,7 @@
         .icon-btn {
             background: none;
             border: none;
-            color: white;
+            color: rgb(251, 251, 251);
             cursor: pointer;
             font-size: 20px;
         }
@@ -56,7 +56,7 @@
             padding: 0 60px;
             box-sizing: border-box;
             opacity: 0;
-            transition: opacity 0.8s ease-in-out;
+            transition: opacity 1s ease-in-out;
             z-index: 1;
         }
         .slide.active {
@@ -255,7 +255,7 @@
             color: #050b14;
         }
         .section-header span {
-            font-size: 14px;
+            font-size: 12px;
             color: #555;
             text-transform: uppercase;
         }
@@ -265,7 +265,7 @@
         }
         .section-header p {
             color: #555;
-            max-width: 700px;
+            max-width: 2000px;
             line-height: 1.6;
             margin-bottom: 40px;
         }
@@ -424,17 +424,81 @@
             color: white;
             text-decoration: underline;
         }
+        /* ปรับแต่งส่วน Header เมนูด้านบน */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            position: relative;
+            cursor: pointer;
+            padding: 10px 0;
+        }
+        .nav-item:hover {
+            color: #00cccc;
+        }
+
+/* กล่องเมนูลอยย่อย (Dropdown) */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;       /* เปลี่ยนจาก left: 0 เป็น right: 0 เพื่อให้กางไปทางซ้าย */
+            left: auto;     /* ยกเลิกค่า left เดิม */
+            background-color: #0b1329;
+            min-width: 220px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+            border: 1px solid #1a2634;
+            border-radius: 4px;
+            display: none; /* ซ่อนไว้ก่อน */
+            z-index: 100;
+            list-style: none;
+            padding: 10px 0;
+            margin: 0;
+        }
+        /* เอาเมาส์ชี้ที่ Product แล้วให้แสดงเมนูลอย */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-menu li a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+        }
+        .dropdown-menu li a:hover {
+            background-color: #1a2634;
+            color: #00cccc;
+        }
     </style>
 </head>
 <body>
 
     <!-- แถบเมนูด้านบน -->
     <header>
-        <div class="logo">CHANON SONRIT</div>
-        <div class="nav-icons">
-            <button class="icon-btn">🔍</button>
-            <button class="icon-btn">🛒</button>
-            <button class="icon-btn" onclick="openLoginModal()">👤</button>
+        <div class="logo">VCC Engineering</div>
+        <div style="display: flex; align-items: center; gap: 30px;">
+            <div class="nav-links">
+                <a href="#" class="nav-item">About us</a>
+                <a href="#" class="nav-item">Contact</a>
+                <a href="#" class="nav-item">Map</a>
+                
+                <!-- เมนู Product ที่มี Dropdown -->
+                <div class="nav-item dropdown" style="position: relative;">
+                    Product ▾
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Automation Systems</a></li>
+                        <li><a href="#">Low Voltage Systems</a></li>
+                        <li><a href="#">High Voltage Systems</a></li>
+                        <li><a href="#">Control Cabinet</a></li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
     </header>
 
@@ -526,9 +590,9 @@
 <!-- ส่วนเนื้อหาหลักและเมนูด้านซ้าย -->
     <section class="main-content-section">
         <div class="section-header">
-            <span>เทคโนโลยี</span>
-            <h2>อัปเกรดความเป็นจริง</h2>
-            <p>ความท้าทายในวันพรุ่งนี้ต้องการการอัปเกรดในวันนี้ เราเสริมพลังความคิดของคุณด้วยปัญญาประดิษฐ์ การจำลอง และเทคโนโลยีอัจฉริยะ พาคุณเดินหน้าจากพิมพ์เขียวดิจิทัลสู่โลกแห่งความเป็นจริง</p>
+            <span>history</span>
+            <h2>VCC Engineering</h2>
+            <p> V.C.C Engineering Co., Ltd. has been developing for over 20 years. We are producer and distributor of electrical control panels; low voltage, medium voltage and high voltage, also supplied the electrical products & parts under highly qualified standard with competitive prices.With our achievement , We have strong experienced teamwork for one stop service in providing high qualitied standard works in electrical , mechanical and control works including Electrical engineering , layout and design , overseas and domestic procurement , Installation , Commissioning , testing , operation and maintenances. We also supply the electrical parts from local and imported from our partners to supply to domestic and overseas customers. Our vision and commitment is to be reputable and reliable providing products, installation electrical system,control works and outsourcing services to diversify the industries and utilities.</p>
         </div>
 
         <div class="content-grid">
@@ -663,11 +727,12 @@
         }
     </script>
     <!-- ส่วนท้ายเว็บไซต์ (Footer) -->
-    <footer>
+ <footer>
         <div class="footer-top">
-            <!-- คอลัมน์ที่ 1: โลโก้และโซเชียลมีเดีย -->
-            <div class="footer-brand">
-                <div class="logo">CHANON SONRIT</div>
+            <!-- รวมทุกอย่างไว้ใน div เดียวกันเพื่อให้เรียงลงมาในแนวตั้ง -->
+            <div class="footer-brand" style="display: flex; flex-direction: column; gap: 15px;">
+                <div class="logo">Contact</div>
+                
                 <div class="social-icons">
                     <a href="#">in</a>
                     <a href="#">▶</a>
@@ -675,59 +740,36 @@
                     <a href="#">𝕏</a>
                     <a href="#">f</a>
                 </div>
-            </div>
 
-            <!-- คอลัมน์ที่ 2 -->
-            <div class="footer-column">
-                <h4>เกี่ยวกับบริษัท</h4>
-                <ul>
-                    <li><a href="#">เกี่ยวกับเรา</a></li>
-                    <li><a href="#">ความเป็นผู้นำ</a></li>
-                    <li><a href="#">ข่าวสารและประชาสัมพันธ์</a></li>
-                </ul>
-            </div>
-
-            <!-- คอลัมน์ที่ 3 -->
-            <div class="footer-column">
-                <h4>ข้อมูลบริษัท</h4>
-                <ul>
-                    <li><a href="#">บริษัท</a></li>
-                    <li><a href="#">นักลงทุนสัมพันธ์</a></li>
-                    <li><a href="#">กลยุทธ์</a></li>
-                </ul>
-            </div>
-
-            <!-- คอลัมน์ที่ 4 -->
-            <div class="footer-column">
-                <h4>ติดต่อเรา</h4>
-                <ul>
-                    <li><a href="#">ติดต่อ</a></li>
-                    <li><a href="#">สำนักงานทั่วโลก</a></li>
-                </ul>
-            </div>
-
-            <!-- คอลัมน์ที่ 5 -->
-            <div class="footer-column">
-                <h4>ตำแหน่งงาน</h4>
-                <ul>
-                    <li><a href="#">ตำแหน่งงาน</a></li>
-                    <li><a href="#">ตำแหน่งที่เปิดรับ</a></li>
-                </ul>
+                <!-- ย้ายข้อมูลบริษัทมาไว้ในนี้ ต่อจากไอคอนโซเชียล -->
+                <div class="footer-column" style="padding: 0;">
+                    <h4>ข้อมูลบริษัท</h4>
+                    <p style="color: #a0aec0; font-size: 16px; margin: 0; white-space: nowrap;">
+                        V.C.C Engineering Co., Ltd
+                    </p>
+                    <p style="color: #a0aec0; font-size: 14px; margin: 0; white-space: nowrap;">
+                        139 Soi Ramintra 5 Yak 18, Tharang, Bangkhen, Bangkok 10220
+                    </p>
+                    <p style="color: #a0aec0; font-size: 14px; margin: 0; white-space: nowrap;">
+                        Tel : 02 552 3658
+                    </p>
+                    <p style="color: #a0aec0; font-size: 14px; margin: 0; white-space: nowrap;">
+                        Mobile : 086 331 1741
+                    </p>
+                    <p style="color: #a0aec0; font-size: 14px; margin: 0; white-space: nowrap;">
+                        Fax : 02 552 3658
+                    </p>
+                    <p style="color: #a0aec0; font-size: 14px; margin: 0; white-space: nowrap;">
+                        Email : vcc_eng@yahoo.com
+                    </p>
+                </div>
             </div>
         </div>
-
+        
         <!-- แถบลิขสิทธิ์และนโยบายด้านล่าง -->
         <div class="footer-bottom">
             <div class="copyright">
-                CHANON SONRIT
-            </div>
-            <div class="footer-bottom-links">
-                <a href="#">ข้อมูลองค์กร</a>
-                <a href="#">ประกาศความเป็นส่วนตัว</a>
-                <a href="#">ประกาศเกี่ยวกับคุกกี้</a>
-                <a href="#">เงื่อนไขการใช้งาน</a>
-                <a href="#">ไอดีดิจิทัล</a>
-                <a href="#">การแจ้งเบาะแส</a>
+                VCC 2026
             </div>
         </div>
     </footer>

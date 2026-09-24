@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - VCC Engineering</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='reference_project.css') }}">
+</head>
+<body>
+
+    <!-- แถบเมนูด้านบน -->
+    <header>
+        <div class="logo">VCC Engineering</div>
+        <div style="display: flex; align-items: center; gap: 30px;">
+            <div class="nav-links">
+                <a href="{{ url_for('home') }}" class="nav-item">Home</a>
+                <a href="#" class="nav-item">About us</a>
+                <a href="#" class="nav-item">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ส่วนสไลด์โชว์หลัก (Hero Slider - ทั้งหมด 5 สไลด์) -->
+    <div class="product-detail-container">
+        <!-- ฝั่งซ้าย: รูปภาพหลัก + รูปย่อยด้านล่าง -->
+            <div class="product-gallery">
+        <!-- กล่องรูปหลัก (ต้องมี position: relative เพื่อให้ปุ่มอ้างอิงตำแหน่งกับกล่องนี้) -->
+        <div class="main-image-box">
+            <img src="{{ url_for('static', filename='station.jpg') }}" alt="Main Product" id="mainImage">
+            
+            <!-- ย้ายปุ่มมาไว้ข้างในนี้ -->
+            <button class="slider-btn prev-btn" onclick="changeslide(-1)">&#10094;</button>
+            <button class="slider-btn next-btn" onclick="changeslide(1)">&#10095;</button>
+        </div>
+
+        <!-- รายการรูปย่อย (Thumbnail) -->
+        <div class="thumbnail-list">
+            <img src="{{ url_for('static', filename='station.jpg') }}" alt="Thumb 1" class="thumb active" onclick="currentImage(0)">
+            <img src="{{ url_for('static', filename='cabinet.jpg') }}" alt="Thumb 2" class="thumb" onclick="currentImage(1)">
+            <img src="{{ url_for('static', filename='cable.jpg') }}" alt="Thumb 3" class="thumb" onclick="currentImage(2)">
+            <img src="{{ url_for('static', filename='Electric.jpg') }}" alt="Thumb 4" class="thumb" onclick="currentImage(3)">
+        </div>
+    </div>
+
+    <!-- ฝั่งขวา: รายละเอียดงาน/สินค้าเรียงลงมา -->
+    <div class="product-info">
+        <h1>Siemens SIPROTEC 7SX80 - Protection Relay</h1>
+        <p class="description">
+            Universal protection device; BI: 4; BO: 5; I: 4 (4x protection); U: 4 (standard); 
+            housing: 1/6 x 19"; 8 LEDs; 9 operating keys; Ethernet: electrical; auxiliary voltage: 24 V - 250 V DC.
+        </p>
+        
+        <div class="spec-row">
+            <span class="spec-label">Project Type</span>
+            <span class="spec-value">Substation & Protection System</span>
+        </div>
+        <div class="spec-row">
+            <span class="spec-label">Product Lifecycle</span>
+            <span class="spec-value active-status">Active Product <i class="info-icon">i</i></span>
+        </div>
+        <div class="spec-row">
+            <span class="spec-label">Project Location</span>
+            <span class="spec-value">เหมืองแม่เมาะ (Mae Moh Mine)</span>
+        </div>
+        <div class="spec-row">
+            <span class="spec-label">Project Value</span>
+            <span class="spec-value">13 Million THB</span>
+        </div>
+    </div>
+</div>
+
+<!-- Script สำหรับคลิกเปลี่ยนรูปภาพย่อย -->
+<script>
+    // 1. รายการ path รูปภาพทั้งหมด (ให้ตรงกับที่คุณแสดงใน Thumbnail)
+    const images = [
+        "{{ url_for('static', filename='station.jpg') }}",
+        "{{ url_for('static', filename='cabinet.jpg') }}",
+        "{{ url_for('static', filename='cable.jpg') }}",
+        "{{ url_for('static', filename='Electric.jpg') }}"
+    ];
+
+    let currentIndex = 0;
+
+    // 2. ฟังก์ชันอัปเดตภาพหลักและไฮไลต์ Thumbnail
+    function updateImages() {
+        const mainImage = document.getElementById('mainImage');
+        if (mainImage) {
+            mainImage.src = images[currentIndex];
+        }
+
+        // อัปเดตกรอบสีฟ้าที่ Thumbnail
+        let thumbs = document.querySelectorAll('.thumb');
+        thumbs.forEach((t, index) => {
+            if (index === currentIndex) {
+                t.classList.add('active');
+            } else {
+                t.classList.remove('active');
+            }
+        });
+    }
+
+    // 3. ฟังก์ชันเมื่อคลิกที่รูป Thumbnail แต่ละรูป
+    function changeImage(element) {
+        let thumbs = Array.from(document.querySelectorAll('.thumb'));
+        currentIndex = thumbs.indexOf(element);
+        updateImages();
+    }
+
+    // 4. ฟังก์ชันกดปุ่มลูกศร ซ้าย-ขวา (`changeslide`)
+    function changeslide(direction) {
+        currentIndex += direction;
+        if (currentIndex >= images.length) {
+            currentIndex = 0; // วนกลับมารูปแรกสุด
+        } else if (currentIndex < 0) {
+            currentIndex = images.length - 1; // วนไปรูปล่าสุด
+        }
+        updateImages();
+    }
+</script>
+</body>
+</html>

@@ -37,25 +37,110 @@
             cursor: pointer;
             font-size: 20px;
         }
-        
-        /* เนื้อหาหน้าเว็บจำลอง */
-        .hero {
-            padding: 80px 40px;
-            max-width: 800px;
+
+        /* ส่วนสไลด์โชว์ (Hero Slider) */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
         }
-        .hero h1 {
-            font-size: 48px;
+        .slide {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 0 60px;
+            box-sizing: border-box;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            z-index: 1;
+        }
+        .slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+        /* เงาดำด้านหลังข้อความให้อ่านง่าย */
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(5, 11, 20, 0.4);
+            z-index: -1;
+        }
+        .slide-content {
+            max-width: 600px;
+        }
+        .slide-content h1 {
+            font-size: 40px;
             margin-bottom: 20px;
+            line-height: 1.3;
         }
-        .hero p {
-            color: #a0aec0;
-            font-size: 18px;
-            line-height: 1.6;
+        .action-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #00cccc;
+            color: #050b14;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+        .action-btn:hover {
+            background-color: #00b3b3;
         }
 
-        /* หน้าต่าง Modal ล็อกอิน (ซ่อนไว้ก่อนจนกว่าจะกดปุ่ม) */
+        /* ปุ่มลูกศรซ้าย-ขวา */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .slider-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .prev-btn { left: 30px; }
+        .next-btn { right: 30px; }
+
+        /* จุดไข่ปลาบอกตำแหน่งสไลด์ */
+        .dots-container {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        .dot {
+            width: 12px; height: 12px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .dot.active {
+            background-color: white;
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        /* หน้าต่าง Modal ล็อกอิน */
         .modal-overlay {
-            display: none; /* ซ่อนเริ่มต้น */
+            display: none;
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
@@ -118,38 +203,56 @@
             font-size: 16px;
             cursor: pointer;
         }
-        .submit-btn:hover {
-            background-color: #00b3b3;
-        }
     </style>
 </head>
 <body>
 
     <!-- แถบเมนูด้านบน -->
     <header>
-        <div class="logo">CHANON SONRIT</div>
+        <div class="logo">CHANON SONROT</div>
         <div class="nav-icons">
             <button class="icon-btn">🔍</button>
             <button class="icon-btn">🛒</button>
-            <!-- ปุ่มรูปคน: พอกดแล้วจะเรียกฟังก์ชันเปิดหน้าต่างล็อกอิน -->
             <button class="icon-btn" onclick="openLoginModal()">👤</button>
         </div>
     </header>
 
-    <!-- เนื้อหาหน้าเว็บ -->
-    <section class="hero">
-        <h1>Transform workflow for everyone</h1>
-        <p>ยินดีต้อนรับสู่ระบบควบคุมและจัดการพลังงานอัจฉริยะ ในวิชา PYTHON</p>
-    </section>
+    <!-- ส่วนสไลด์โชว์หลัก (Hero Slider) -->
+    <div class="slider-container">
+        <!-- สไลด์ที่ 1 -->
+        <div class="slide active" style="background-image: url('{{ url_for('static', filename='power line.jpg') }}');">
+            <div class="slide-content">
+                <h1>Deep in the Amazon, a cooperative partnered with Natura...</h1>
+                <a href="#" class="action-btn">Read the story</a>
+            </div>
+        </div>
 
-    <!-- กล่องป๊อปอัปหน้าล็อกอิน (ซ่อนอยู่) -->
+        <!-- สไลด์ที่ 2 (สามารถเปลี่ยนรูปพื้นหลังได้ตามต้องการ) -->
+        <div class="slide" style="background-image: url('{{ url_for('static', filename='cable.jpg') }}');">
+            <div class="slide-content">
+                <h1>Transform mobility for everyone with sustainable tech.</h1>
+                <a href="#" class="action-btn">Innotrans 2026</a>
+            </div>
+        </div>
+
+        <!-- ปุ่มกดเลื่อนซ้าย-ขวา -->
+        <button class="slider-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="slider-btn next-btn" onclick="changeSlide(1)">&#10095;</button>
+
+        <!-- จุดไข่ปลาบอกหน้า -->
+        <div class="dots-container">
+            <div class="dot active" onclick="currentSlide(0)"></div>
+            <div class="dot" onclick="currentSlide(1)"></div>
+        </div>
+    </div>
+
+    <!-- กล่องป๊อปอัปหน้าล็อกอิน -->
     <div class="modal-overlay" id="loginModal">
         <div class="login-box">
             <button class="close-btn" onclick="closeLoginModal()">&times;</button>
             <h2>Log in</h2>
             <p>Sign in to your account</p>
 
-            <!-- ฟอร์มส่งข้อมูลไปยัง app.py ของคุณ -->
             <form action="/" method="POST">
                 <div class="input-group">
                     <label for="username">Email address*</label>
@@ -164,23 +267,39 @@
         </div>
     </div>
 
-    <!-- JavaScript สำหรับควบคุมการเปิด-ปิดหน้าต่าง -->
+    <!-- จาวาสคริปต์ควบคุมสไลด์โชว์และป๊อปอัป -->
     <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(index) {
+            if (index >= slides.length) slideIndex = 0;
+            if (index < 0) slideIndex = slides.length - 1;
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            slides[slideIndex].classList.add('active');
+            dots[slideIndex].classList.add('active');
+        }
+
+        function changeSlide(n) {
+            slideIndex += n;
+            showSlide(slideIndex);
+        }
+
+        function currentSlide(n) {
+            slideIndex = n;
+            showSlide(slideIndex);
+        }
+
+        // ควบคุม Modal ล็อกอิน
         const modal = document.getElementById('loginModal');
-
-        function openLoginModal() {
-            modal.style.display = 'flex'; // แสดงหน้าต่าง
-        }
-
-        function closeLoginModal() {
-            modal.style.display = 'none'; // ซ่อนหน้าต่าง
-        }
-
-        // ปิดหน้าต่างเมื่อคลิกพื้นที่ว่างรอบๆ กล่อง
+        function openLoginModal() { modal.style.display = 'flex'; }
+        function closeLoginModal() { modal.style.display = 'none'; }
         window.onclick = function(event) {
-            if (event.target == modal) {
-                closeLoginModal();
-            }
+            if (event.target == modal) closeLoginModal();
         }
     </script>
 

@@ -68,7 +68,7 @@
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(5, 11, 20, 0.4);
+            background: rgba(5, 11, 20, 0.2);
             z-index: -1;
         }
         .slide-content {
@@ -203,13 +203,234 @@
             font-size: 16px;
             cursor: pointer;
         }
+        /* 1. แถบไฮไลต์ด้านล่างสไลด์ */
+        .highlight-bar {
+            background-color: #f4f4f4;
+            color: #050b14;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid #ddd;
+        }
+        .highlight-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .highlight-left img {
+            width: 120px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .highlight-info h3 {
+            margin: 0 0 5px 0;
+            font-size: 18px;
+        }
+        .highlight-info p {
+            margin: 0;
+            font-size: 14px;
+            color: #555;
+        }
+        .outline-btn {
+            background: none;
+            border: 2px solid #050b14;
+            color: #050b14;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .outline-btn:hover {
+            background-color: #050b14;
+            color: white;
+        }
+
+        /* 2. ส่วนเนื้อหาหลักด้านล่าง (มีเมนูด้านซ้ายและเนื้อหาด้านขวา) */
+        .main-content-section {
+            padding: 60px 40px;
+            background-color: white;
+            color: #050b14;
+        }
+        .section-header span {
+            font-size: 14px;
+            color: #555;
+            text-transform: uppercase;
+        }
+        .section-header h2 {
+            font-size: 32px;
+            margin: 5px 0 15px 0;
+        }
+        .section-header p {
+            color: #555;
+            max-width: 700px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        /* โครงสร้างแบ่งซ้าย-ขวา */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 40px;
+        }
+        /* เมนูด้านซ้าย */
+        .side-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .menu-item {
+            padding: 15px;
+            font-weight: bold;
+            color: #050b14;
+            text-decoration: none;
+            border-left: 4px solid transparent;
+            cursor: pointer;
+        }
+        .menu-item.active {
+            background-color: #e6f7f7;
+            border-left-color: #00cccc;
+            color: #008888;
+        }
+        .menu-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* การ์ดเนื้อหาด้านขวา */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .content-card {
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .content-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .card-body .tag {
+            font-size: 12px;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .card-body h3 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+        .card-body p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        /* ส่วนท้ายเว็บไซต์ (Footer) */
+        footer {
+            background-color: #050b14;
+            color: #ffffff;
+            padding: 60px 40px 30px 40px;
+            border-top: 1px solid #1a2634;
+            font-family: Arial, sans-serif;
+        }
+        .footer-top {
+            display: grid;
+            grid-template-columns: 280px repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        .footer-brand .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            font-size: 18px;
+        }
+        .social-icons a {
+            color: white;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.1);
+            width: 35px; height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+        }
+        .social-icons a:hover {
+            background: #00cccc;
+            color: #050b14;
+        }
+        .footer-column h4 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        .footer-column ul li a {
+            color: #a0aec0;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .footer-column ul li a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* แถบล่างสุดของ Footer */
+        .footer-bottom {
+            border-top: 1px solid #1a2634;
+            padding-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 13px;
+            color: #a0aec0;
+        }
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .footer-bottom-links a {
+            color: #a0aec0;
+            text-decoration: none;
+        }
+        .footer-bottom-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
 
     <!-- แถบเมนูด้านบน -->
     <header>
-        <div class="logo">CHANON SONROT</div>
+        <div class="logo">CHANON SONRIT</div>
         <div class="nav-icons">
             <button class="icon-btn">🔍</button>
             <button class="icon-btn">🛒</button>
@@ -220,7 +441,7 @@
     <!-- ส่วนสไลด์โชว์หลัก (Hero Slider) -->
     <div class="slider-container">
         <!-- สไลด์ที่ 1 -->
-        <div class="slide active" style="background-image: url('{{ url_for('static', filename='power line.jpg') }}');">
+        <div class="slide active" style="background-image: url('{{ url_for('static', filename='station.jpg') }}');">
             <div class="slide-content">
                 <h1>Deep in the Amazon, a cooperative partnered with Natura...</h1>
                 <a href="#" class="action-btn">Read the story</a>
@@ -302,6 +523,214 @@
             if (event.target == modal) closeLoginModal();
         }
     </script>
+<!-- ส่วนเนื้อหาหลักและเมนูด้านซ้าย -->
+    <section class="main-content-section">
+        <div class="section-header">
+            <span>เทคโนโลยี</span>
+            <h2>อัปเกรดความเป็นจริง</h2>
+            <p>ความท้าทายในวันพรุ่งนี้ต้องการการอัปเกรดในวันนี้ เราเสริมพลังความคิดของคุณด้วยปัญญาประดิษฐ์ การจำลอง และเทคโนโลยีอัจฉริยะ พาคุณเดินหน้าจากพิมพ์เขียวดิจิทัลสู่โลกแห่งความเป็นจริง</p>
+        </div>
+
+        <div class="content-grid">
+            <!-- เมนูด้านซ้าย -->
+            <div class="side-menu">
+                <a class="menu-item active" onclick="switchCategory('ai', this)">ปัญญาประดิษฐ์</a>
+                <a class="menu-item" onclick="switchCategory('twin', this)">คู่แฝดดิจิทัล</a>
+            </div>
+
+            <!-- การ์ดเนื้อหาด้านขวา (จะเปลี่ยนเนื้อหาตามเมนูที่คลิก) -->
+            <div class="cards-container" id="dynamicContent">
+                <!-- ค่าเริ่มต้น: ปัญญาประดิษฐ์ -->
+                <div class="content-card">
+                    <img src="{{ url_for('static', filename='test.jpg') }}" alt="AI Strawberry">
+                    <div class="card-body">
+                        <span class="tag">CUSTOMER STORY</span>
+                        <h3>AI on the family farm helps a robot pick strawberries</h3>
+                        <p>Meet Fravebot. It monitors plant health, spots pests early and predicts harvests two weeks out.</p>
+                        <a href="#" style="color: #050b14; font-weight: bold; text-decoration: none; margin-top: 15px; display: inline-block;">Read customer story &rarr;</a>
+                    </div>
+                </div>
+                <div class="content-card" style="background-color: #050b14; color: white;">
+                    <div class="card-body" style="display: flex; flex-direction: column; justify-content: space-height; height: 100%;">
+                        <span class="tag" style="color: #a0aec0;">E-BOOK</span>
+                        <h3 style="color: white;">E-book: Industrial AI across the value chain</h3>
+                        <p style="color: #cbd5e0;">How industrial AI is transforming every step, from product design and engineering to production.</p>
+                        <a href="#" style="color: white; font-weight: bold; text-decoration: none; margin-top: 15px; display: inline-block;">Download the e-book &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- จาวาสคริปต์สำหรับเปลี่ยนเนื้อหาเมื่อคลิกเมนู -->
+    <script>
+        const contentData = {
+            ai: `
+                <div class="content-card">
+                    <img src="{{ url_for('static', filename='test.jpg') }}" alt="AI">
+                    <div class="card-body">
+                        <span class="tag">CUSTOMER STORY</span>
+                        <h3>AI on the family farm helps a robot pick strawberries</h3>
+                        <p>Meet Fravebot. It monitors plant health, spots pests early and predicts harvests two weeks out.</p>
+                        <a href="#" style="color: #050b14; font-weight: bold; text-decoration: none; margin-top: 15px; display: inline-block;">Read customer story &rarr;</a>
+                    </div>
+                </div>
+                <div class="content-card" style="background-color: #050b14; color: white;">
+                    <div class="card-body">
+                        <span class="tag" style="color: #a0aec0;">E-BOOK</span>
+                        <h3 style="color: white;">E-book: Industrial AI across the value chain</h3>
+                        <p style="color: #cbd5e0;">How industrial AI is transforming every step, from product design and engineering to production.</p>
+                        <a href="#" style="color: white; font-weight: bold; text-decoration: none; margin-top: 15px; display: inline-block;">Download the e-book &rarr;</a>
+                    </div>
+                </div>
+            `,
+            twin: `
+                <div class="content-card">
+                    <img src="{{ url_for('static', filename='test.jpg') }}" alt="Digital Twin">
+                    <div class="card-body">
+                        <span class="tag">CUSTOMER STORY</span>
+                        <h3>From design to road: how Hymer skipped the mockups</h3>
+                        <p>A digital twin took Hymer's Venture S camper van from sketch to production - cutting physical prototypes by 80%.</p>
+                        <a href="#" style="color: #050b14; font-weight: bold; text-decoration: none; margin-top: 15px; display: inline-block;">Read customer story &rarr;</a>
+                    </div>
+                </div>
+                <div class="content-card" style="background-color: #050b14; color: white;">
+                    <div class="card-body">
+                        <span class="tag" style="color: #a0aec0;">E-BOOK</span>
+                        <h3 style="color: white;">The comprehensive digital twin for machinery</h3>
+                        <p style="color: #cbd5e0;">One digital twin to unify mechanical, electrical, and automation engineering seamlessly.</p>
+                        <a href="#" style="color: white; font-weight: bold; text-decoration: none; margin-top: 15px; display: inline-block;">Read more &rarr;</a>
+                    </div>
+                </div>
+            `,
+            digital: `
+                <div class="content-card">
+                    <img src="{{ url_for('static', filename='test.jpg') }}" alt="Digital Transformation">
+                    <div class="card-body">
+                        <span class="tag">CUSTOMER STORY</span>
+                        <h3>How insect farming is feeding the future</h3>
+                        <p>Nasekomo is scaling insect protein production with digital twins to turn agricultural waste into animal feed.</p>
+                        <a href="#" style="color: #050b14; font-weight: bold; text-decoration: none; margin-top: 15px; display: inline-block;">Read customer story &rarr;</a>
+                    </div>
+                </div>
+                <div class="content-card" style="background-color: #050b14; color: white;">
+                    <div class="card-body">
+                        <span class="tag" style="color: #a0aec0;">WHITEPAPER</span>
+                        <h3 style="color: white;">Right-size your digital transformation</h3>
+                        <p style="color: #cbd5e0;">A practical guide for food and beverage manufacturers starting or scaling their digitalization journey.</p>
+                        <a href="#" style="color: white; font-weight: bold; text-decoration: none; margin-top: 15px; display: inline-block;">Read more &rarr;</a>
+                    </div>
+                </div>
+            `,
+            infrastructure: `
+                <div class="content-card">
+                    <div class="card-body">
+                        <span class="tag">INFRASTRUCTURE</span>
+                        <h3>Smart grids and power distribution</h3>
+                        <p>Building resilient electrical networks for heavy industries and modern smart cities.</p>
+                    </div>
+                </div>
+            `,
+            software: `
+                <div class="content-card">
+                    <div class="card-body">
+                        <span class="tag">SOFTWARE</span>
+                        <h3>Totally Integrated Automation (TIA Portal)</h3>
+                        <p>Engineering efficiency and seamless integration for all automation tasks.</p>
+                    </div>
+                </div>
+            `,
+            sustainability: `
+                <div class="content-card">
+                    <div class="card-body">
+                        <span class="tag">SUSTAINABILITY</span>
+                        <h3>Decarbonization and energy efficiency</h3>
+                        <p>Cutting carbon footprints and optimizing resource consumption in industrial plants.</p>
+                    </div>
+                </div>
+            `
+        };
+
+        function switchCategory(categoryKey, element) {
+            // เปลี่ยนสถานะ Active ที่เมนูซ้าย
+            document.querySelectorAll('.side-menu .menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            element.classList.add('active');
+
+            // เปลี่ยนเนื้อหาในการ์ดด้านขวา
+            document.getElementById('dynamicContent').innerHTML = contentData[categoryKey];
+        }
+    </script>
+    <!-- ส่วนท้ายเว็บไซต์ (Footer) -->
+    <footer>
+        <div class="footer-top">
+            <!-- คอลัมน์ที่ 1: โลโก้และโซเชียลมีเดีย -->
+            <div class="footer-brand">
+                <div class="logo">CHANON SONRIT</div>
+                <div class="social-icons">
+                    <a href="#">in</a>
+                    <a href="#">▶</a>
+                    <a href="#">📷</a>
+                    <a href="#">𝕏</a>
+                    <a href="#">f</a>
+                </div>
+            </div>
+
+            <!-- คอลัมน์ที่ 2 -->
+            <div class="footer-column">
+                <h4>เกี่ยวกับบริษัท</h4>
+                <ul>
+                    <li><a href="#">เกี่ยวกับเรา</a></li>
+                    <li><a href="#">ความเป็นผู้นำ</a></li>
+                    <li><a href="#">ข่าวสารและประชาสัมพันธ์</a></li>
+                </ul>
+            </div>
+
+            <!-- คอลัมน์ที่ 3 -->
+            <div class="footer-column">
+                <h4>ข้อมูลบริษัท</h4>
+                <ul>
+                    <li><a href="#">บริษัท</a></li>
+                    <li><a href="#">นักลงทุนสัมพันธ์</a></li>
+                    <li><a href="#">กลยุทธ์</a></li>
+                </ul>
+            </div>
+
+            <!-- คอลัมน์ที่ 4 -->
+            <div class="footer-column">
+                <h4>ติดต่อเรา</h4>
+                <ul>
+                    <li><a href="#">ติดต่อ</a></li>
+                    <li><a href="#">สำนักงานทั่วโลก</a></li>
+                </ul>
+            </div>
+
+            <!-- คอลัมน์ที่ 5 -->
+            <div class="footer-column">
+                <h4>ตำแหน่งงาน</h4>
+                <ul>
+                    <li><a href="#">ตำแหน่งงาน</a></li>
+                    <li><a href="#">ตำแหน่งที่เปิดรับ</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- แถบลิขสิทธิ์และนโยบายด้านล่าง -->
+        <div class="footer-bottom">
+            <div class="copyright">
+                CHANON SONRIT
+            </div>
+            <div class="footer-bottom-links">
+                <a href="#">ข้อมูลองค์กร</a>
+                <a href="#">ประกาศความเป็นส่วนตัว</a>
+                <a href="#">ประกาศเกี่ยวกับคุกกี้</a>
+                <a href="#">เงื่อนไขการใช้งาน</a>
+                <a href="#">ไอดีดิจิทัล</a>
+                <a href="#">การแจ้งเบาะแส</a>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>

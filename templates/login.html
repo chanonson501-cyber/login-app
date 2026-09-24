@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>หน้าแรก - ระบบของฉัน</title>
+    <title>VCC Engineering</title>
     <style>
         body {
             margin: 0;
@@ -17,8 +17,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 40px;
-            background-color: #050b14;
-            border-bottom: 1px solid #1a2634;
+            background-color: #51575f14;
+            border-bottom: 1px solid #4f565f;
         }
         .logo {
             font-size: 24px;
@@ -598,20 +598,20 @@
         <div class="content-grid">
             <!-- เมนูด้านซ้าย -->
             <div class="side-menu">
-                <a class="menu-item active" onclick="switchCategory('ai', this)">ปัญญาประดิษฐ์</a>
-                <a class="menu-item" onclick="switchCategory('twin', this)">คู่แฝดดิจิทัล</a>
+                <a class="menu-item active" onclick="switchCategory('ai', this)">Project Reference</a>
+                <a class="menu-item" onclick="switchCategory('twin', this)">Certificate</a>
             </div>
 
             <!-- การ์ดเนื้อหาด้านขวา (จะเปลี่ยนเนื้อหาตามเมนูที่คลิก) -->
             <div class="cards-container" id="dynamicContent">
                 <!-- ค่าเริ่มต้น: ปัญญาประดิษฐ์ -->
                 <div class="content-card">
-                    <img src="{{ url_for('static', filename='test.jpg') }}" alt="AI Strawberry">
+                    <img src="{{ url_for('static', filename='Electric.jpg') }}" alt="AI Strawberry">
                     <div class="card-body">
                         <span class="tag">CUSTOMER STORY</span>
                         <h3>AI on the family farm helps a robot pick strawberries</h3>
                         <p>Meet Fravebot. It monitors plant health, spots pests early and predicts harvests two weeks out.</p>
-                        <a href="#" style="color: #050b14; font-weight: bold; text-decoration: none; margin-top: 15px; display: inline-block;">Read customer story &rarr;</a>
+                        <a href=""{{ url_for('dashboard') }}"" style="color: #050b14; font-weight: bold; text-decoration: none; margin-top: 15px; display: inline-block;">Read project reference &rarr;</a>
                     </div>
                 </div>
                 <div class="content-card" style="background-color: #050b14; color: white;">
@@ -631,7 +631,7 @@
         const contentData = {
             ai: `
                 <div class="content-card">
-                    <img src="{{ url_for('static', filename='test.jpg') }}" alt="AI">
+                    <img src="{{ url_for('static', filename='Electirc.jpg') }}" alt="AI">
                     <div class="card-body">
                         <span class="tag">CUSTOMER STORY</span>
                         <h3>AI on the family farm helps a robot pick strawberries</h3>

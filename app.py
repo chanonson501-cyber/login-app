@@ -3,8 +3,8 @@ from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 
 # กำหนด Username และ Password สำหรับล็อกอิน
-USERNAME_DB = "ploy"
-PASSWORD_DB = "chanon"
+USERNAME_DB = "chanon.sonrit@outlook.com"
+PASSWORD_DB = "0986620801as"
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
@@ -16,7 +16,7 @@ def login():
         if username == USERNAME_DB and password == PASSWORD_DB:
             return redirect(url_for('dashboard'))
         else:
-            error = "ลองใหม่อีกทีค้าบ ถ้าไม่ถูกอีกโดนหอมแก้มนะ"
+            error = "ลองใหม่อีกครั้ง"
             
     return render_template('login.html', error=error)
 

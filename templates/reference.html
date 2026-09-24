@@ -22,7 +22,7 @@
     </header>
 
     <!-- ส่วนสไลด์โชว์หลัก (Hero Slider - ทั้งหมด 5 สไลด์) -->
-    <div class="product-detail-container">
+    <div class="product-detail-container" id="project1">
         <!-- ฝั่งซ้าย: รูปภาพหลัก + รูปย่อยด้านล่าง -->
             <div class="product-gallery">
         <!-- กล่องรูปหลัก (ต้องมี position: relative เพื่อให้ปุ่มอ้างอิงตำแหน่งกับกล่องนี้) -->
@@ -46,19 +46,16 @@
 
     <!-- ฝั่งขวา: รายละเอียดงาน/สินค้าเรียงลงมา -->
     <div class="product-info">
-        <h1>Siemens SIPROTEC 7SX80 - Protection Relay</h1>
+        <h1>Excavator Power Supply Substation</h1>
         <p class="description">
-            Universal protection device; BI: 4; BO: 5; I: 4 (4x protection); U: 4 (standard); 
-            housing: 1/6 x 19"; 8 LEDs; 9 operating keys; Ethernet: electrical; auxiliary voltage: 24 V - 250 V DC.
+            V.C.C. Engineering Co., Ltd. has been entrusted by Italian-Thai Development to provide comprehensive engineering and
+            full-service solutions for the Excavator Power Supply Substation. V.C.C. is responsible for upgrading the electrical 
+            control system of the substation. The project is located at the Mae Moh Mine, Lampang.
         </p>
         
         <div class="spec-row">
             <span class="spec-label">Project Type</span>
-            <span class="spec-value">Substation & Protection System</span>
-        </div>
-        <div class="spec-row">
-            <span class="spec-label">Product Lifecycle</span>
-            <span class="spec-value active-status">Active Product <i class="info-icon">i</i></span>
+            <span class="spec-value">Substation</span>
         </div>
         <div class="spec-row">
             <span class="spec-label">Project Location</span>
@@ -69,54 +66,112 @@
             <span class="spec-value">13 Million THB</span>
         </div>
     </div>
+    <div class="product-detail-container" id="project2">
+    <!-- ฝั่งซ้าย: รูปภาพหลัก + รูปย่อยด้านล่าง -->
+    <div class="product-gallery">
+        <!-- กล่องรูปหลักของโปรเจกต์ 2 -->
+        <div class="main-image-box">
+            <!-- เปลี่ยนรูปเริ่มต้นเป็น cabinet.jpg หรือรูปอื่นของโปรเจกต์ 2 -->
+            <img src="{{ url_for('static', filename='cabinet.jpg') }}" alt="Main Product 2" id="mainImage2">
+            
+            <!-- ปุ่มเปลี่ยนสไลด์ ส่งชื่อ ID 'project2' เข้าไป -->
+            <button class="slider-btn prev-btn" onclick="changeslide('project2', -1)">&#10094;</button>
+            <button class="slider-btn next-btn" onclick="changeslide('project2', 1)">&#10095;</button>
+        </div>
+
+        <!-- รายการรูปย่อย (Thumbnail) ของโปรเจกต์ 2 -->
+        <div class="thumbnail-list">
+            <img src="{{ url_for('static', filename='cabinet.jpg') }}" alt="Thumb 1" class="thumb active" onclick="changeImage('project2', 0)">
+            <img src="{{ url_for('static', filename='station.jpg') }}" alt="Thumb 2" class="thumb" onclick="changeImage('project2', 1)">
+            <img src="{{ url_for('static', filename='cable.jpg') }}" alt="Thumb 3" class="thumb" onclick="changeImage('project2', 2)">
+            <img src="{{ url_for('static', filename='Electric.jpg') }}" alt="Thumb 4" class="thumb" onclick="changeImage('project2', 3)">
+        </div>
+    </div>
+
+    <!-- ฝั่งขวา: รายละเอียดโปรเจกต์ที่ 2 -->
+    <div class="product-info">
+        <h1>ชื่อโปรเจกต์ที่ 2 ของคุณ</h1>
+        <p class="description">
+            รายละเอียดและคำอธิบายของโปรเจกต์ที่ 2 ตรงนี้...
+        </p>
+        
+        <div class="spec-row">
+            <span class="spec-label">Project Type</span>
+            <span class="spec-value">ประเภทงานของโปรเจกต์ 2</span>
+        </div>
+        <div class="spec-row">
+            <span class="spec-label">Project Location</span>
+            <span class="spec-value">สถานที่ตั้งโปรเจกต์ 2</span>
+        </div>
+        <div class="spec-row">
+            <span class="spec-label">Project Value</span>
+            <span class="spec-value">มูลค่าโปรเจกต์</span>
+        </div>
+    </div>
 </div>
 
 <!-- Script สำหรับคลิกเปลี่ยนรูปภาพย่อย -->
 <script>
-    // 1. รายการ path รูปภาพทั้งหมด (ให้ตรงกับที่คุณแสดงใน Thumbnail)
-    const images = [
-        "{{ url_for('static', filename='station.jpg') }}",
-        "{{ url_for('static', filename='cabinet.jpg') }}",
-        "{{ url_for('static', filename='cable.jpg') }}",
-        "{{ url_for('static', filename='Electric.jpg') }}"
-    ];
-
-    let currentIndex = 0;
-
-    // 2. ฟังก์ชันอัปเดตภาพหลักและไฮไลต์ Thumbnail
-    function updateImages() {
-        const mainImage = document.getElementById('mainImage');
-        if (mainImage) {
-            mainImage.src = images[currentIndex];
+    // เก็บข้อมูลรูปภาพและลำดับรูปปัจจุบันของแต่ละโปรเจกต์แยกกันเด็ดขาด
+    const projectData = {
+        'project1': {
+            images: [
+                "{{ url_for('static', filename='station.jpg') }}",
+                "{{ url_for('static', filename='cabinet.jpg') }}",
+                "{{ url_for('static', filename='cable.jpg') }}",
+                "{{ url_for('static', filename='Electric.jpg') }}"
+            ],
+            currentIndex: 0
+        },
+        'project2': {
+            images: [
+                "{{ url_for('static', filename='cabinet.jpg') }}",
+                "{{ url_for('static', filename='station.jpg') }}",
+                "{{ url_for('static', filename='cable.jpg') }}",
+                "{{ url_for('static', filename='Electric.jpg') }}"
+            ],
+            currentIndex: 0
         }
+    };
 
-        // อัปเดตกรอบสีฟ้าที่ Thumbnail
-        let thumbs = document.querySelectorAll('.thumb');
-        thumbs.forEach((t, index) => {
-            if (index === currentIndex) {
-                t.classList.add('active');
+    function updateView(projectId) {
+        const container = document.getElementById(projectId);
+        const data = projectData[projectId];
+
+        // เปลี่ยนรูปภาพหลักของโปรเจกต์นั้นๆ
+        const mainImg = container.querySelector('.main-image-box img');
+        mainImg.src = data.images[data.currentIndex];
+
+        // อัปเดตสถานะ Active ของ Thumbnail ในโปรเจกต์นั้นๆ
+        const thumbs = container.querySelectorAll('.thumb');
+        thumbs.forEach((thumb, index) => {
+            if (index === data.currentIndex) {
+                thumb.classList.add('active');
             } else {
-                t.classList.remove('active');
+                thumb.classList.remove('active');
             }
         });
     }
 
-    // 3. ฟังก์ชันเมื่อคลิกที่รูป Thumbnail แต่ละรูป
-    function changeImage(element) {
-        let thumbs = Array.from(document.querySelectorAll('.thumb'));
-        currentIndex = thumbs.indexOf(element);
-        updateImages();
+    // ฟังก์ชันกดเลือกจากรูป Thumbnail เล็ก
+    function changeImage(projectId, index) {
+        projectData[projectId].currentIndex = index;
+        updateView(projectId);
     }
 
-    // 4. ฟังก์ชันกดปุ่มลูกศร ซ้าย-ขวา (`changeslide`)
-    function changeslide(direction) {
-        currentIndex += direction;
-        if (currentIndex >= images.length) {
-            currentIndex = 0; // วนกลับมารูปแรกสุด
-        } else if (currentIndex < 0) {
-            currentIndex = images.length - 1; // วนไปรูปล่าสุด
+    // ฟังก์ชันกดปุ่มลูกศร ซ้าย/ขวา เลื่อนสไลด์
+    function changeslide(projectId, direction) {
+        const data = projectData[projectId];
+        data.currentIndex += direction;
+        
+        // วนลูปกลับภาพแรกหรือภาพสุดท้ายอัตโนมัติ
+        if (data.currentIndex >= data.images.length) {
+            data.currentIndex = 0;
+        } else if (data.currentIndex < 0) {
+            data.currentIndex = data.images.length - 1;
         }
-        updateImages();
+        
+        updateView(projectId);
     }
 </script>
 </body>

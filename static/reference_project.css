@@ -1,6 +1,7 @@
 /* จัดเลย์เอาต์หลัก ซ้าย-ขวา */
 .product-detail-container {
     display: flex;
+    flex-direction: column; /* สำคัญ: สั่งให้กล่องลูกข้างในเรียงจากบนลงล่าง */
     gap: 40px;
     max-width: 1500px;
     margin: 40px auto;

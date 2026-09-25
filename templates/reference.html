@@ -53,7 +53,7 @@
 
 <!-- Script สำหรับคลิกเปลี่ยนรูปภาพย่อย -->
 <script>
-    // ข้อมูลโปรเจกต์ทั้งหมด (สามารถเพิ่มหรือแก้ไขข้อมูลตรงนี้ได้เลยครับ)
+    // ข้อมูลโปรเจกต์ทั้งหมด
     const heroProjects = [
         {
             title: "Excavator Substation",
@@ -89,7 +89,7 @@
 
     let currentIndex = 0;
     const totalSlides = heroProjects.length;
-    let isScrolling = false; // ตัวแปรป้องกันการเลื่อนรัวเกินไป
+    let isScrolling = false;
 
     // ฟังก์ชันอัปเดตการแสดงผลของสไลด์
     function updateSlide(index) {
@@ -119,27 +119,27 @@
 
     // 2. ควบคุมการเลื่อนด้วยลูกกลิ้งเมาส์ (Mouse Wheel)
     heroSection.addEventListener('wheel', (e) => {
-        e.preventDefault(); // ป้องกันไม่ให้หน้าเว็บหลักเลื่อนทันทีขณะอยู่บนแบนเนอร์
+        e.preventDefault();
 
         if (isScrolling) return;
         isScrolling = true;
 
         if (e.deltaY > 0) {
-            // หมุนลูกกลิ้งลง -> ไปสไลด์ถัดไป
             currentIndex = (currentIndex + 1) % totalSlides;
         } else {
-            // หมุนลูกกลิ้งขึ้น -> กลับไปสไลด์ก่อนหน้า
             currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
         }
 
         updateSlide(currentIndex);
 
-        // กำหนดหน่วงเวลา (Delay) 800 มิลลิวินาที เพื่อความนุ่มนวลและป้องกันสไลด์กระโดดข้ามรัวๆ
         setTimeout(() => {
             isScrolling = false;
         }, 800);
 
     }, { passive: false });
+
+    // === เพิ่มบรรทัดนี้: บังคับให้โหลดข้อมูลและรูปภาพแรกทันทีที่เปิดหน้าเว็บ ===
+    updateSlide(currentIndex);
 </script>
 </body>
 </html>

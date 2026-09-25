@@ -17,7 +17,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.65); 
+    background: rgba(0, 0, 0, 0.4); 
     z-index: 1;
 }
 
@@ -29,8 +29,8 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: 1300px;
-    padding: 0 50px;
+    max-width: 100%; /* เปลี่ยนจากกำหนดขนาดจำกัด เป็นใช้ความกว้างเต็ม 100% */
+    padding: 0 40px; /* ลดระยะห่างขอบซ้าย-ขวาลงตามต้องการ เช่น 40px หรือปรับเป็น 20px ให้ชิดยิ่งขึ้น */
     box-sizing: border-box;
 }
 

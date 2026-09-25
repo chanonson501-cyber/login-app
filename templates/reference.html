@@ -211,6 +211,23 @@
 
     // โหลดค่าเริ่มต้นครั้งแรก
     fnLoadSlide(0, 0);
+    // ฟังก์ชันโหลดภาพล่วงหน้า (Preload Images)
+    function preloadImages() {
+        heroProjects.forEach(proj => {
+            // Preload รูปพื้นหลัง (Background)
+            const bgImg = new Image();
+            bgImg.src = proj.bg;
+
+            // Preload รูปภาพย่อยทั้งหมดในโปรเจกต์
+            proj.images.forEach(imgSrc => {
+                const thumbImg = new Image();
+                thumbImg.src = imgSrc;
+            });
+        });
+    }
+
+    // เรียกใช้งานทันทีเมื่อโหลดสคริปต์
+    preloadImages();
 </script>
 </body>
 </html>

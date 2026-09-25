@@ -80,25 +80,7 @@
     font-size: 16px;
     color: #d1d5db;
     margin-bottom: 25px;
-}
-
-/* ปุ่ม DISCOVER MORE */
-.discover-btn {
-    display: inline-block;
-    padding: 12px 30px;
-    border: 2px solid #ffffff;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 30px;
-    font-weight: bold;
-    font-size: 14px;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-}
-
-.discover-btn:hover {
-    background: #ffffff;
-    color: #000000;
+    text-align: left;
 }
 
 /* รูปภาพฝั่งขวา */

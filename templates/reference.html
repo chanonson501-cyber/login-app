@@ -35,11 +35,10 @@
 
         <!-- ตรงกลาง: หัวข้อและรายละเอียดโปรเจกต์ -->
         <div class="hero-content">
-            <h1 class="main-heading">Products</h1>
+            <h1 class="main-heading">Major Project</h1>
             <div class="product-info-box">
-                <h2>Excavator Substation</h2>
+                <h2>Excavator Power Supply Substation</h2>
                 <p>Efficient power system and control upgrade</p>
-                <a href="#details" class="discover-btn">DISCOVER MORE</a>
             </div>
         </div>
 
@@ -57,7 +56,7 @@
     const heroProjects = [
         {
             title: "Excavator Substation",
-            desc: "Efficient power system and control upgrade",
+            desc: "V.C.C. Engineering Co., Ltd. has been entrusted by Italian-Thai Development to provide comprehensive engineering and full-service solutions for the Excavator Power Supply Substation. V.C.C. is responsible for upgrading the electrical control system of the substation. The project is located at the Mae Moh Mine, Lampang.",
             image: "{{ url_for('static', filename='cabinet.jpg') }}",
             bg: "{{ url_for('static', filename='station.jpg') }}"
         },
@@ -134,7 +133,7 @@
 
         setTimeout(() => {
             isScrolling = false;
-        }, 800);
+        }, 350);
 
     }, { passive: false });
 

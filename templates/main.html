@@ -10,7 +10,7 @@
 
     <!-- แถบเมนูด้านบน -->
     <header>
-        <div class="logo">VCC Engineering</div>
+        <div class="logo">VCC Engineering Co.,Ltd</div>
         <div style="display: flex; align-items: center; gap: 30px;">
             <div class="nav-links">
                 <a href="#" class="nav-item">About us</a>
@@ -36,8 +36,8 @@
         <!-- สไลด์ที่ 1 -->
         <div class="slide active" style="background-image: url('{{ url_for('static', filename='station.jpg') }}');">
             <div class="slide-content">
-                <h1>Deep in the Amazon, a cooperative partnered with Natura...</h1>
-                <a href="#" class="action-btn">Read the story</a>
+                <h1>Powering Industry Growth Our Major Engineering Projects and Flagship Achievements</h1>
+                <a href="{{ url_for('reference') }}" class="action-btn">Explore Our Track Record</a>
             </div>
         </div>
 
@@ -85,14 +85,22 @@
     <section class="main-content-section">
         <div class="section-header">
             <span>history</span>
-            <h2>VCC Engineering</h2>
-            <p> V.C.C Engineering Co., Ltd. has been developing for over 20 years. We are producer and distributor of electrical control panels; low voltage, medium voltage and high voltage, also supplied the electrical products & parts under highly qualified standard with competitive prices.With our achievement , We have strong experienced teamwork for one stop service in providing high qualitied standard works in electrical , mechanical and control works including Electrical engineering , layout and design , overseas and domestic procurement , Installation , Commissioning , testing , operation and maintenances. We also supply the electrical parts from local and imported from our partners to supply to domestic and overseas customers. Our vision and commitment is to be reputable and reliable providing products, installation electrical system,control works and outsourcing services to diversify the industries and utilities.</p>
+            <h2>VCC Engineering Co., Ltd</h2>
+            <p> V.C.C Engineering Co., Ltd. has been developing for over 20 years. We are producer and 
+                distributor of electrical control panels; low voltage, medium voltage and high voltage, 
+                also supplied the electrical products & parts under highly qualified standard with competitive
+                prices.With our achievement , We have strong experienced teamwork for one stop service in providing high 
+                qualitied standard works in electrical , mechanical and control works including Electrical engineering , layout and 
+                design , overseas and domestic procurement , Installation , Commissioning , testing , operation and maintenances. 
+                We also supply the electrical parts from local and imported from our partners to supply to domestic and overseas customers. 
+                Our vision and commitment is to be reputable and reliable providing products, installation electrical system,control 
+                works and outsourcing services to diversify the industries and utilities.</p>
         </div>
 
         <div class="content-grid">
             <!-- เมนูด้านซ้าย -->
             <div class="side-menu">
-                <a class="menu-item active" onclick="switchCategory('ai', this)">Project Reference</a>
+                <a class="menu-item active" onclick="switchCategory('ai', this)">Major project</a>
                 <a class="menu-item" onclick="switchCategory('twin', this)">Certificate</a>
             </div>
 
@@ -101,10 +109,11 @@
                 <div class="content-card">
                     <img src="{{ url_for('static', filename='Electric.jpg') }}" alt="AI Strawberry">
                     <div class="card-body">
-                        <span class="tag">CUSTOMER STORY</span>
-                        <h3>AI on the family farm helps a robot pick strawberries</h3>
-                        <p>Meet Fravebot. It monitors plant health, spots pests early and predicts harvests two weeks out.</p>
-                        <a href="{{ url_for('reference') }}" style="color: #050b14; font-weight: bold; text-decoration: none; margin-top: 15px; display: inline-block;">Read Project Reference &rarr;</a>
+                        <span class="tag">MAJOR PROJECT</span>
+                        <h3>Our Major Projects & Milestone Achievements</h3>
+                        <p>Discover our journey of growth through our proudest achievements, major industrial undertakings,
+                            and a complete collection of large-scale engineering projects.</p>
+                        <a href="{{ url_for('reference') }}" style="color: #050b14; font-weight: bold; text-decoration: none; margin-top: 15px; display: inline-block;">View Our Track Record &rarr;</a>
                     </div>
                 </div>
                 <div class="content-card" style="background-color: #050b14; color: white;">
@@ -197,7 +206,7 @@
                         <span class="tag">CUSTOMER STORY</span>
                         <h3>AI on the family farm helps a robot pick strawberries</h3>
                         <p>Meet Fravebot. It monitors plant health, spots pests early and predicts harvests two weeks out.</p>
-                        <a href="#" style="color: #050b14; font-weight: bold; text-decoration: none; margin-top: 15px; display: inline-block;">Read project reference &rarr;</a>
+                        <a href="{{ url_for('reference') }}" style="color: #050b14; font-weight: bold; text-decoration: none; margin-top: 15px; display: inline-block;">View Our Track Record &rarr;</a>
                     </div>
                 </div>
                 <div class="content-card" style="background-color: #050b14; color: white;">

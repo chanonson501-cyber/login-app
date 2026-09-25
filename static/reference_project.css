@@ -64,15 +64,21 @@
 }
 
 .main-heading {
-    font-size: 52px;
+    font-size: 45px;
     font-weight: bold;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
     letter-spacing: 1px;
 }
 
 .product-info-box h2 {
-    font-size: 38px;
+    font-size: 30px;
     margin-bottom: 10px;
+    font-weight: bold;
+}
+.product-info-box h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-align: left;
     font-weight: bold;
 }
 
@@ -94,6 +100,93 @@
     height: auto;
     border-radius: 8px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* ฝั่งขวาหลัก */
+.hero-image {
+    flex: 0 0 48%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/* กล่องรูปภาพหลัก */
+.main-image-box {
+    position: relative;
+    width: 100%;
+    height: 380px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    background: #111;
+}
+
+.main-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+/* ปุ่มลูกศรซ้าย-ขวา (ซ่อนไว้เป็นค่าเริ่มต้น) */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    opacity: 0; /* ซ่อนปุ่มให้จางหายไป */
+    transition: opacity 0.3s ease, background-color 0.2s;
+}
+
+.prev-btn { left: 15px; }
+.next-btn { right: 15px; }
+
+/* เมื่อเอาเมาส์ชี้ที่กล่องรูปภาพหลัก ให้ปุ่มแสดงขึ้นมา */
+.main-image-box:hover .slider-btn {
+    opacity: 1;
+}
+
+.slider-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* รายการรูปย่อย 4 รูปด้านล่าง */
+.thumbnail-list {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.thumb {
+    width: 80px;
+    height: 55px;
+    object-fit: cover;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: all 0.2s ease;
+}
+
+.thumb:hover {
+    opacity: 0.8;
+}
+
+.thumb.active {
+    border-color: #22c55e;
+    opacity: 1;
 }
 
 /* Responsive สำหรับหน้าจอเล็ก */
